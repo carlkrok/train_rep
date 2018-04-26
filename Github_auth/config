@@ -1,0 +1,5 @@
+Host github.com
+Hostname github.com
+User carlkrok
+PubKeyAuthentication yes
+IdentityFile ~/.ssh/id_rsa
