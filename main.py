@@ -24,6 +24,17 @@ def main():
 
     np_steering_tot = np.zeros((1))
     
+    np_val_images, np_val_steering = load_dataset_simulator.load_dataset("center","test")
+    np_val_images_new, np_val_steering_new = load_dataset_simulator.load_dataset("right","test")
+    np_val_images = np.concatenate((np_val_images, np_val_images_new))
+    np_val_steering = np.concatenate((np_val_steering, np_val_steering_new))
+    np_val_images_new, np_val_steering_new = load_dataset_simulator.load_dataset("left","test")
+    np_val_images = np.concatenate((np_val_images, np_val_images_new))
+    np_val_steering = np.concatenate((np_val_steering, np_val_steering_new))
+
+    print("Length of val images: ", len(np_val_images))
+    np.save("np_images",np_val_images)
+    
     first_iter = True
 
     print("Loading datasets...")
