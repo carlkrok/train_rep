@@ -88,7 +88,7 @@ def vgg16():
 
 
 
-    for this_layer in model.layers[:14]:
+    for this_layer in model.layers[:16]:
         this_layer.trainable = False
 
 
