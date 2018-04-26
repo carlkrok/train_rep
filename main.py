@@ -23,6 +23,8 @@ def main():
     checkpoint = ModelCheckpoint('curr_best_model.h5', monitor='val_loss',verbose=0,save_best_only=True, mode='auto') #Saved_models
 
     np_steering_tot = np.zeros((1))
+    
+    first_iter = True
 
     print("Loading datasets...")
     for dataset in ["LEFT", "RIGHT", "mond", "mond2", "mond3", "mond4", "track1_rewind", "track2"]:
@@ -31,7 +33,10 @@ def main():
             print("Currently loading dataset: ", dataset, ", angle: ", camera_angle, ".")
             np_images, np_steering = load_dataset_simulator.load_dataset(camera_angle,dataset)
             
-            model = load_model('curr_best_model.h5')
+            if first_iter:
+                first_iter = False
+            else: 
+                model = load_model('curr_best_model.h5')
 
             print("Training the model...")
             history = model.fit(x=np_images, y=np_steering, epochs=50, batch_size=1, callbacks=[checkpoint, csv_logger], validation_data=(np_val_images, np_val_steering))
