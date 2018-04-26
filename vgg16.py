@@ -1,5 +1,3 @@
-import save_load_model
-
 from keras.models import Model
 from keras.optimizers import Adam
 from keras.models import Sequential
