@@ -33,7 +33,6 @@ def main():
     np_val_steering = np.concatenate((np_val_steering, np_val_steering_new))
 
     print("Length of val images: ", len(np_val_images))
-    np.save("np_images",np_val_images)
     
     first_iter = True
 
