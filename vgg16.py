@@ -98,6 +98,6 @@ def vgg16():
     model.compile(loss='mean_squared_error', optimizer=slow_adam, metrics=['accuracy'])
     model.summary()
 
-    save_load_model.save_model(model, "vgg16_batchnorm_slowlearning")
+    model.save("vgg16_batchnorm_slowlearning")
 
     return 0;
